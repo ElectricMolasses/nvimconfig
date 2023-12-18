@@ -1,3 +1,19 @@
+-- Style floating windows with borders
+local border = {
+    {"🭽", "FloatBorder"},
+    {"▔", "FloatBorder"},
+    {"🭾", "FloatBorder"},
+    {"▕", "FloatBorder"},
+    {"🭿", "FloatBorder"},
+    {"▁", "FloatBorder"},
+    {"🭼", "FloatBorder"},
+    {"▏", "FloatBorder"},
+}
+
+local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+}
+
 local lspconfig = require('lspconfig')
 
 -- https://luals.github.io/#install
@@ -20,4 +36,7 @@ lspconfig.gopls.setup({})
 lspconfig.tsserver.setup({})
 
 -- rustup: rls rust-analysis-rust-src
-lspconfig.rust_analyzer.setup({})
+lspconfig.rust_analyzer.setup({
+    handlers=handlers
+})
+

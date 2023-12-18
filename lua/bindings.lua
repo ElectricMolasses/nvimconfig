@@ -34,3 +34,7 @@ harpoon:setup()
 vim.keymap.set('n', '<Leader>hm', function() harpoon:list():append() end)
 --  View harpoon marks
 vim.keymap.set('n', '<Leader>hv', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+-- Lsp bindings
+--  Show hover information
+vim.keymap.set('n', '<Leader>lh', vim.lsp.buf.hover)
