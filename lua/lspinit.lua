@@ -18,3 +18,6 @@ lspconfig.gopls.setup({})
 
 -- arch: typescript-language-server
 lspconfig.tsserver.setup({})
+
+-- rustup: rls rust-analysis-rust-src
+lspconfig.rust_analyzer.setup({})

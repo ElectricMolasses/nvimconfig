@@ -15,4 +15,7 @@ vim.call('plug#', 'nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 vim.call('plug#', 'nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
 vim.call('plug#', 'nvim-telescope/telescope.nvim', { branch = '0.1.x' })
 
+-- Harpoon looks amazing so let's try it out
+vim.call('plug#', 'ThePrimeagen/harpoon', { branch = 'harpoon2' })
+
 vim.call('plug#end')
