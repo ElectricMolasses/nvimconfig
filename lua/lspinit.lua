@@ -12,6 +12,7 @@ local border = {
 
 local handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = border}),
 }
 
 local lspconfig = require('lspconfig')
@@ -19,6 +20,7 @@ local lspconfig = require('lspconfig')
 -- https://luals.github.io/#install
 -- arch: lua-language-server
 lspconfig.lua_ls.setup({
+    handlers=handlers,
     settings = {
         Lua = {
             diagnostics = {
@@ -30,10 +32,14 @@ lspconfig.lua_ls.setup({
 
 -- https://cs.opensource.google/go/x/tools/+/refs/tags/gopls/v0.14.2:gopls/doc/vim.md#neovim-install
 -- arch: gopls
-lspconfig.gopls.setup({})
+lspconfig.gopls.setup({
+    handlers=handlers
+})
 
 -- arch: typescript-language-server
-lspconfig.tsserver.setup({})
+lspconfig.tsserver.setup({
+    handlers=handlers
+})
 
 -- rustup: rls rust-analysis-rust-src
 lspconfig.rust_analyzer.setup({
