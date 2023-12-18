@@ -38,3 +38,39 @@ vim.keymap.set('n', '<Leader>hv', function() harpoon.ui:toggle_quick_menu(harpoo
 -- Lsp bindings
 --  Show hover information
 vim.keymap.set('n', '<Leader>lh', vim.lsp.buf.hover)
+--  Show line diagnostics in a popup
+local function show_line_diagnostics()
+    local diagnostics = vim.diagnostic.get(0, {lnum = vim.api.nvim_win_get_cursor(0)[1] - 1})
+    local lines = {}
+
+    for _, diag in ipairs(diagnostics) do
+        for _, line in ipairs(vim.split(diag.message, '\n', true)) do
+            table.insert(lines, line)
+        end
+    end
+
+    if #lines == 0 then return end
+
+    local border_opts = {
+        border = "single",
+        focusable = false,
+        style = "minimal",
+        relative = "cursor",
+        row = 1,
+        col = 0,
+    }
+
+    vim.lsp.util.open_floating_preview(lines, "plaintext", border_opts)
+end
+vim.keymap.set('n', '<Leader>ld', show_line_diagnostics)
+
+-- Attach local buffer options on LSP connect
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        -- Jump to declaration/definition in buffer
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    end
+})
