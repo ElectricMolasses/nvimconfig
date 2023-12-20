@@ -25,6 +25,11 @@ vim.keymap.set('n', '<Leader>fg', ':Telescope live_grep<CR>')
 vim.keymap.set('n', '<Leader>fb', ':Telescope buffers<CR>')
 vim.keymap.set('n', '<Leader>fh', ':Telescope help_tags<CR>')
 
+-- Telescope file browser bindings
+--  Open the file explorer
+vim.keymap.set('n', '<Leader>fe', ':Telescope file_browser<CR>')
+vim.keymap.set('n', '<Leader>fE', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
+
 -- Harpoon bindings
 --  For simplicity, we just run setup where we create bindings for it.
 local harpoon = require('harpoon')

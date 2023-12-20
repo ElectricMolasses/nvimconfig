@@ -46,3 +46,16 @@ lspconfig.rust_analyzer.setup({
     handlers=handlers
 })
 
+-- phpactor
+lspconfig.phpactor.setup({
+    handlers=handlers,
+    init_options = {
+        ["language_server_phpstan.enabled"] = false,
+        ["language_server_psalm.enabled"] = false,
+    }
+})
+
+-- pyright
+lspconfig.pyright.setup({
+    handlers=handlers,
+})
