@@ -30,11 +30,8 @@ vim.keymap.set('n', '<Leader>fh', ':Telescope help_tags<CR>')
 vim.keymap.set('n', '<Leader>fe', ':Telescope file_browser<CR>')
 vim.keymap.set('n', '<Leader>fE', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
 
--- Harpoon bindings
---  For simplicity, we just run setup where we create bindings for it.
+-- Harpoon Man!
 local harpoon = require('harpoon')
-harpoon:setup()
-
 --  Create a harpoon mark
 vim.keymap.set('n', '<Leader>hm', function() harpoon:list():append() end)
 --  View harpoon marks

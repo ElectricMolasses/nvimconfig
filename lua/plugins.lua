@@ -30,4 +30,7 @@ vim.call('plug#', 'hrsh7th/nvim-cmp')
 --  nvim-cmp requires a snippet engine
 vim.call('plug#', 'L3MON4D3/LuaSnip')
 
+--  DSL for yuck language support
+vim.call('plug#', 'elkowar/yuck.vim')
+
 vim.call('plug#end')
