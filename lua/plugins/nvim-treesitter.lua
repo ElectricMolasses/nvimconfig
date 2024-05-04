@@ -6,6 +6,8 @@ require'nvim-treesitter.configs'.setup {
         "typescript",
         "svelte",
         "scss",
+        "markdown",
+        "clojure",
     },
 
     highlight = {

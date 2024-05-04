@@ -64,6 +64,9 @@ lspconfig.pyright.setup({
     handlers=handlers,
 })
 
+-- clojure
+lspconfig.clojure_lsp.setup{}
+
 -- omnisharp for unity
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
