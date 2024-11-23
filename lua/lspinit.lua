@@ -1,13 +1,13 @@
 -- Style floating windows with borders
 local border = {
-    {"🭽", "FloatBorder"},
-    {"▔", "FloatBorder"},
-    {"🭾", "FloatBorder"},
-    {"▕", "FloatBorder"},
-    {"🭿", "FloatBorder"},
-    {"▁", "FloatBorder"},
-    {"🭼", "FloatBorder"},
-    {"▏", "FloatBorder"},
+    {"┌", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"┐", "FloatBorder"},
+    {"│", "FloatBorder"},
+    {"┘", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"└", "FloatBorder"},
+    {"│", "FloatBorder"},
 }
 
 local handlers = {
@@ -37,13 +37,17 @@ lspconfig.gopls.setup({
 })
 
 -- arch: typescript-language-server
-lspconfig.tsserver.setup({
-    handlers=handlers
-})
+lspconfig.ts_ls.setup{}
+
+-- npm: vscode-langservers-extracted
+lspconfig.jsonls.setup{}
 
 -- svelte: github.com/sveltejs/language-tools
 --  You can install the LSP per project via npm's 'svelte-language-server' package.
 lspconfig.svelte.setup{}
+
+-- vue
+lspconfig.vuels.setup{}
 
 -- rustup: rls rust-analysis-rust-src
 lspconfig.rust_analyzer.setup({
@@ -66,6 +70,9 @@ lspconfig.pyright.setup({
 
 -- clojure
 lspconfig.clojure_lsp.setup{}
+
+-- toml
+lspconfig.taplo.setup{}
 
 -- omnisharp for unity
 -- Use an on_attach function to only map the following keys

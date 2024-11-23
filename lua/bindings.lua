@@ -14,8 +14,28 @@ vim.keymap.set('n', '<Leader><CR>', function()
     vim.cmd('source ~/.config/nvim/init.lua')
 end)
 
--- Explorer bindings
-vim.keymap.set('n', '<Leader>e', ':Vex<CR>')
+vim.g.background_is_transparent = false
+local normal_hl_background = vim.api.nvim_get_hl_by_name('Normal', true).background
+vim.g.original_guibg = normal_hl_background and string.format("#%06x", normal_hl_background) or "NONE"
+vim.g.original_ctermbg = ""
+
+function _G.toggle_background_transparency()
+    if vim.g.background_is_transparent then
+        vim.cmd(string.format([[
+            highlight Normal guibg=%s ctermbg=black
+            highlight NonText guibg=% ctermbg=black
+        ]], vim.g.original_guibg, vim.g.original_guibg))
+        vim.g.background_is_transparent = false
+    else
+        vim.cmd[[
+            highlight Normal guibg=NONE ctermbg=NONE
+            highlight NonText guibg=NONE ctermbg=NONE
+        ]]
+        vim.g.background_is_transparent = true
+    end
+end
+
+vim.keymap.set('n', '<Leader>oo', ':lua toggle_background_transparency()<CR>', { noremap = true, silent = true })
 
 -- Telescope bindings
 --  Fuzzy find based on the current git repo

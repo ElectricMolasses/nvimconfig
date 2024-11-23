@@ -34,3 +34,7 @@ vim.call('plug#', 'L3MON4D3/LuaSnip')
 vim.call('plug#', 'elkowar/yuck.vim')
 
 vim.call('plug#end')
+
+
+require('plugins/nvim-cmp')
+require('plugins/nvim-treesitter')
