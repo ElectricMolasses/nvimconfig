@@ -27,11 +27,15 @@ vim.call('plug#', 'hrsh7th/cmp-buffer')
 vim.call('plug#', 'hrsh7th/cmp-path')
 vim.call('plug#', 'hrsh7th/cmp-cmdline')
 vim.call('plug#', 'hrsh7th/nvim-cmp')
+
 --  nvim-cmp requires a snippet engine
 vim.call('plug#', 'L3MON4D3/LuaSnip')
 
 --  DSL for yuck language support
 vim.call('plug#', 'elkowar/yuck.vim')
+
+-- nvim-jdtls for java support
+vim.call('plug#', 'mfussenegger/nvim-jdtls')
 
 vim.call('plug#end')
 

@@ -17,6 +17,15 @@ local handlers = {
 
 local lspconfig = require('lspconfig')
 
+-- c: clangd
+lspconfig.clangd.setup{}
+
+-- java: nvim-jdtls
+-- require('jdtls').start_or_attach({
+--   cmd = {'/usr/bin/jdtls'},
+--   root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true})[1]),
+-- })
+
 -- https://luals.github.io/#install
 -- arch: lua-language-server
 lspconfig.lua_ls.setup({
@@ -116,3 +125,6 @@ local omnisharp_bin = "/home/onion/Work/Tools/omnisharp-1.38.2/run"
 --     cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
 --     root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln");
 -- }
+
+--- SvelteKit
+lspconfig.svelte.setup({});
