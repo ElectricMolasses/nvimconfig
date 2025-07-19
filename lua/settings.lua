@@ -9,6 +9,22 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.cursorline = true
 
+-- Tab overrides
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gdscript",
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.softtabstop = 4
+    vim.bo.expandtab = false
+  end,
+})
+
 -- Set theme
 vim.cmd('colorscheme catppuccin-mocha')
 
+-- Have vim start a listening server so external programs can send it commands
+local pipepath = vim.fn.stdpath("cache") .. "/server.pipe"
+if not vim.loop.fs_stat(pipepath) then
+  vim.fn.serverstart(pipepath)
+end

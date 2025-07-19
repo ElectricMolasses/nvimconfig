@@ -127,4 +127,27 @@ local omnisharp_bin = "/home/onion/Work/Tools/omnisharp-1.38.2/run"
 -- }
 
 --- SvelteKit
-lspconfig.svelte.setup({});
+lspconfig.svelte.setup{}
+
+--- Godot baybee
+lspconfig.gdscript.setup{}
+
+--- Arduino LSP
+lspconfig.arduino_language_server.setup{
+  cmd = {
+    "arduino-language-server",
+    "-fqbn", "arduino:avr:nano",
+  }
+}
+
+lspconfig.emmet_ls.setup{
+  init_options = {
+    userLanguages = {
+      eelixir = "html-eex",
+      eruby = "erb",
+      rust = "html",
+    },
+  },
+}
+
+lspconfig.somesass_ls.setup{}

@@ -37,6 +37,9 @@ vim.call('plug#', 'elkowar/yuck.vim')
 -- nvim-jdtls for java support
 vim.call('plug#', 'mfussenegger/nvim-jdtls')
 
+-- Copilot
+-- vim.call('plug#', 'github/copilot.vim')
+
 vim.call('plug#end')
 
 

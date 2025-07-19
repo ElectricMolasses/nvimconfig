@@ -75,7 +75,7 @@ local function show_line_diagnostics()
 
     local border_opts = {
         border = "single",
-        focusable = false,
+        focusable = true,
         style = "minimal",
         relative = "cursor",
         row = 1,
