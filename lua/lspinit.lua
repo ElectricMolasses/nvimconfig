@@ -15,10 +15,8 @@ local handlers = {
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = border}),
 }
 
-local lspconfig = require('lspconfig')
-
 -- c: clangd
-lspconfig.clangd.setup{}
+vim.lsp.config('clangd', {})
 
 -- java: nvim-jdtls
 -- require('jdtls').start_or_attach({
@@ -28,7 +26,7 @@ lspconfig.clangd.setup{}
 
 -- https://luals.github.io/#install
 -- arch: lua-language-server
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
     handlers=handlers,
     settings = {
         Lua = {
@@ -41,30 +39,43 @@ lspconfig.lua_ls.setup({
 
 -- https://cs.opensource.google/go/x/tools/+/refs/tags/gopls/v0.14.2:gopls/doc/vim.md#neovim-install
 -- arch: gopls
-lspconfig.gopls.setup({
+vim.lsp.config('gopls', {
     handlers=handlers
 })
 
 -- arch: typescript-language-server
-lspconfig.ts_ls.setup{}
+vim.lsp.config('ts_ls', {
+  init_options = { hostInfo = 'neovim' },
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+  },
+  root_dir = vim.fs.root(0, {'tsconfig.json', 'jsconfig.json', 'package.json', '.git'}),
+  single_file_support = true,
+})
 
 -- npm: vscode-langservers-extracted
-lspconfig.jsonls.setup{}
+vim.lsp.config('jsonls', {});
 
 -- svelte: github.com/sveltejs/language-tools
 --  You can install the LSP per project via npm's 'svelte-language-server' package.
-lspconfig.svelte.setup{}
+vim.lsp.config('svelte', {});
 
 -- vue
-lspconfig.vuels.setup{}
+vim.lsp.config('vuels', {});
 
 -- rustup: rls rust-analysis-rust-src
-lspconfig.rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
     handlers=handlers
 })
 
 -- phpactor
-lspconfig.phpactor.setup({
+vim.lsp.config('phpactor', {
     handlers=handlers,
     init_options = {
         ["language_server_phpstan.enabled"] = false,
@@ -73,15 +84,15 @@ lspconfig.phpactor.setup({
 })
 
 -- pyright
-lspconfig.pyright.setup({
+vim.lsp.config('pyright', {
     handlers=handlers,
 })
 
 -- clojure
-lspconfig.clojure_lsp.setup{}
+vim.lsp.config('clojure', {})
 
 -- toml
-lspconfig.taplo.setup{}
+vim.lsp.config('taplo', {})
 
 -- omnisharp for unity
 -- Use an on_attach function to only map the following keys
@@ -108,39 +119,20 @@ end
 local pid = vim.fn.getpid()
 local omnisharp_bin = "/home/onion/Work/Tools/omnisharp-1.38.2/run"
 
--- lspconfig.omnisharp.setup({
---     cmd = {
---         'mono',
---         '--assembly-loader=strict',
---         omnisharp_bin,
---     },
---     use_mono = true,
--- })
-
--- lspconfig.omnisharp.setup{
---     on_attach = on_attach,
---     flags = {
---       debounce_text_changes = 150,
---     },
---     cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
---     root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln");
--- }
-
---- SvelteKit
-lspconfig.svelte.setup{}
-
 --- Godot baybee
-lspconfig.gdscript.setup{}
+vim.lsp.config('gdscript', {
+  handlers=handlers,
+})
 
 --- Arduino LSP
-lspconfig.arduino_language_server.setup{
+vim.lsp.config('arduino_language_server', {
   cmd = {
     "arduino-language-server",
     "-fqbn", "arduino:avr:nano",
   }
-}
+})
 
-lspconfig.emmet_ls.setup{
+vim.lsp.config('emmet_ls', {
   init_options = {
     userLanguages = {
       eelixir = "html-eex",
@@ -148,6 +140,6 @@ lspconfig.emmet_ls.setup{
       rust = "html",
     },
   },
-}
+})
 
-lspconfig.somesass_ls.setup{}
+vim.lsp.config('somesass_ls', {})

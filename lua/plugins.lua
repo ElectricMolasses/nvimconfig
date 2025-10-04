@@ -3,6 +3,7 @@ vim.call('plug#begin', '~/.config/nvim/plugins')
 -- Deps
 vim.call('plug#', 'nvim-tree/nvim-web-devicons')
 vim.call('plug#', 'nvim-lua/plenary.nvim')
+vim.call('plug#', 'MunifTanjim/nui.nvim')
 
 -- Themes
 vim.call('plug#', 'catppuccin/nvim')
@@ -40,8 +41,12 @@ vim.call('plug#', 'mfussenegger/nvim-jdtls')
 -- Copilot
 -- vim.call('plug#', 'github/copilot.vim')
 
+-- remote-nvim for streaming view
+vim.call('plug#', 'amitds1997/remote-nvim.nvim')
+
 vim.call('plug#end')
 
 
 require('plugins/nvim-cmp')
 require('plugins/nvim-treesitter')
+require('remote-nvim').setup()

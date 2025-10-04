@@ -53,7 +53,7 @@ vim.keymap.set('n', '<Leader>fE', ':Telescope file_browser path=%:p:h select_buf
 -- Harpoon Man!
 local harpoon = require('harpoon')
 --  Create a harpoon mark
-vim.keymap.set('n', '<Leader>hm', function() harpoon:list():append() end)
+vim.keymap.set('n', '<Leader>hm', function() harpoon:list():add() end)
 --  View harpoon marks
 vim.keymap.set('n', '<Leader>hv', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
@@ -94,5 +94,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Jump to declaration/definition in buffer
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     end
 })
