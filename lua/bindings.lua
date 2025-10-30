@@ -12,6 +12,7 @@ vim.keymap.set('n', '<Leader><CR>', function()
 
     -- Now we re-run the source command.
     vim.cmd('source ~/.config/nvim/init.lua')
+    vim.cmd('echo "Config reloaded"')
 end)
 
 vim.g.background_is_transparent = false
@@ -34,8 +35,6 @@ function _G.toggle_background_transparency()
         vim.g.background_is_transparent = true
     end
 end
-
-vim.keymap.set('n', '<Leader>oo', ':lua toggle_background_transparency()<CR>', { noremap = true, silent = true })
 
 -- Telescope bindings
 --  Fuzzy find based on the current git repo

@@ -55,7 +55,11 @@ vim.lsp.config('ts_ls', {
     'typescriptreact',
     'typescript.tsx',
   },
-  root_dir = vim.fs.root(0, {'tsconfig.json', 'jsconfig.json', 'package.json', '.git'}),
+  root_dir = function(buf)
+    return vim.fs.root(buf, {'tsconfig.json', 'jsconfig.json', 'package.json', '.git'})
+      or vim.uv.cwd()
+  end,
+  -- root_dir = vim.fs.root(0, {'tsconfig.json', 'jsconfig.json', 'package.json', '.git'}),
   single_file_support = true,
 })
 
@@ -143,3 +147,10 @@ vim.lsp.config('emmet_ls', {
 })
 
 vim.lsp.config('somesass_ls', {})
+
+
+vim.lsp.enable({
+  'ts_ls',
+  'jsonls',
+  'gdscript',
+})
